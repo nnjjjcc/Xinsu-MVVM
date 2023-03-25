@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3 v-text="car.brand">{{car.brand}}</h3>
+        <h3 v-text="car.brand"></h3>
+        <p>{{car.color}}</p>
+        <p>msg {{msg}}</p>
+        <p>tag {{tag}}</p>
+        <p v-text="msg" title="哈韩"></p>
+        <p v-html="tag" title="i韩"></p>
+        <input type="text" v-model="car.color">
+        <button v-on:click="clickFn">v-on</button>
+    </div>
+    <script src="./src/vue3reactive.js"></script>
+    <script src="./src/compile.js"></script>
+    <script src="./src/vue.js"></script>
+    <script src="./src/myDebounce.js"></script>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                msg: '看看你的',
+                tag: '<h3>哈哈</h3>',
+                car: {
+                    brand: '大众',
+                    color: 'yellow',
+                    next: {
+                        console: "第二层的对象"
+                    }
+                }
+            },
+            methods: {
+                clickFn() {
+                    // 在vue的methods 中this应该指向当前实例
+                    this.$data.msg = " 看看你的啦啦啦啦啦"
+                }
+            },
+        },
+        )
+
+    </script>
+</body>
+
+</html>
